@@ -1,0 +1,17 @@
+.active{
+	color :red;
+}
+.icon-holder{
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	margin: 10px 0;
+}
+.icons-left{
+	display: flex;
+	width: 160px;
+	justify-content: space-evenly;
+}
+.fa-bookmark{
+	margin-right: 20px
+}

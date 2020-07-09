@@ -1,0 +1,13 @@
+.post-container{
+	display: block;
+	border: 1px solid black;
+	margin-bottom: 80px
+}
+.post-img{
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+}
+.caption-holder{
+	padding: 5px 10px
+}
