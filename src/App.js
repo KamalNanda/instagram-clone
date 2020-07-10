@@ -32,7 +32,7 @@ class App extends Component{
       "userImg" : "https://ik.imagekit.io/hbj42mvqwv/95136161_2314381235529760_7156256645826215936_n_gNRPFl-ED.jpg",
       "postImg" : this.state.newPostImg,
       "postCaption" : this.state.newPostCaption,
-      "comments" : [],
+      "comments" : [""],
       "likes" : 0
     }
     this.setState(state => ({
