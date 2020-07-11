@@ -10,8 +10,11 @@ class Comment extends Component{
   		}
   	}
   componentDidMount(){
+    var commentString
+    if(this.props.data) commentString = this.props.data.split(",")
+    else commentString = []
   		this.setState({
-  			comments : this.props.data, 
+  			comments : commentString, 
   			id : this.props.id
   		})
   }
