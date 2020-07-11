@@ -39,8 +39,8 @@ class App extends Component{
     var data = {
       "sheet" : {
         "id" : Number(new Date()),
-        "userName" : "Kamal Nanda",
-        "userImg" : "https://ik.imagekit.io/hbj42mvqwv/95136161_2314381235529760_7156256645826215936_n_gNRPFl-ED.jpg",
+        "userName" : "User",
+        "userImg" : "https://ik.imagekit.io/hbj42mvqwv/witcher_4xtax1fWWj.jpg",
         "postImg" : this.state.newPostImg,
         "postCaption" : this.state.newPostCaption,
         "comments" : ""
