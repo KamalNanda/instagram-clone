@@ -9,10 +9,13 @@ class Comment extends Component{
   			comment: ""
   		}
   	}
-  componentDidMount(){
-    var commentString
-    if(this.props.data) commentString = this.props.data.split(",")
-    else commentString = []
+ async componentDidMount(){
+   
+    await axios.get(`https://v2-api.sheety.co/64d720c036ff9d3e73304b37a08af355/instagramCloneKamalnanda/comments/${this.props.id}`)
+    .then(response => {
+      if (response.data.comment.comment) commentString = response.data.comment.comment.split(",")
+        else commentString = []
+    })
   		this.setState({
   			comments : commentString, 
   			id : this.props.id
