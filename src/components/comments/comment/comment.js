@@ -1,5 +1,7 @@
 import React , {Component} from 'react';
 import CommentBar from '../commentBar/commentBar'
+import axios from 'axios'
+var commentString
 class Comment extends Component{
   constructor(props){
   		super(props)
