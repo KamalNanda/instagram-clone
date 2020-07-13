@@ -39,11 +39,18 @@ class App extends Component{
     var data = {
       "sheet" : {
         "id" : Number(new Date()),
-        "userName" : "User",
-        "userImg" : "https://ik.imagekit.io/hbj42mvqwv/witcher_4xtax1fWWj.jpg",
+        "userName" : "Kamal Nanda",
+        "userImg" : "https://ik.imagekit.io/hbj42mvqwv/95136161_2314381235529760_7156256645826215936_n_gNRPFl-ED.jpg",
         "postImg" : this.state.newPostImg,
         "postCaption" : this.state.newPostCaption,
         "comments" : ""
+      }
+    }
+    var commentData = {
+      comment : {
+        "id" : data.sheet.id,
+        "postId" : data.sheet.id,
+        "comment" : ""
       }
     }
     JSON.stringify(data)
@@ -54,6 +61,18 @@ class App extends Component{
       },
       method: "POST",
       body: JSON.stringify(data)
+     }).then( (response) => {
+        return response.json()
+      }).then( (json) => {
+        console.log(json);
+      });
+      await fetch("https://v2-api.sheety.co/64d720c036ff9d3e73304b37a08af355/instagramCloneKamalnanda/comments", {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(commentData)
      }).then( (response) => {
         return response.json()
       }).then( (json) => {
