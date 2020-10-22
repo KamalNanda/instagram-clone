@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import Post from './components/post/post'
 import './App.css';
-import Contact from './components/Contact/Contact/'
+import Contact from './components/Contact/Contact'
 import CreatePost from './components/createPost/createPost'
 import 'bulma/css/bulma.css'
 import axios from 'axios'
