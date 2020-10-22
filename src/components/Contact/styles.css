@@ -1,0 +1,107 @@
+.contact-btn{
+	background-color: #ff9900;
+	color: white;
+	border: none;
+	font-size: 24px;
+	padding: 15px 30px;
+	position: fixed;
+	border-radius: 50px;
+	font-weight: 700;
+	right: 40px;
+	border: 2px solid white
+}
+#contact{
+	position: fixed;
+	right: 40px;
+	bottom: 15vh;
+	z-index: 1
+}
+/************ Contact Body ***********/
+#contactBody{
+	width: 450px;
+	height: 200px;
+	border: 8px solid #ff9900;
+	background-color: white;
+	color: #ff9900;
+	display: none;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+@media (max-width: 525px){
+	#contactBody{
+		width: 90%
+	}
+	.cbH{
+		margin-top: 40px
+	}
+	.contact-header{
+		left: 6% !important
+	}
+}
+.contact-header{
+	font-size: 10px;
+	color: white;
+	background-color: #ff9900;
+	text-align: center;
+	width: 76%;
+	left: 12%;
+	padding: 8px 0;
+	position: absolute;
+	top: 0;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.contact-header h1{
+	margin: 0
+}
+header{
+	display: flex;
+	flex-direction: row-reverse;
+}
+.close{
+	width: 8%;
+	margin-top: 4px;
+	margin-right: 8px;
+	cursor: pointer;
+}
+.icon-holder{
+	display: flex;
+	width: 90%;
+	margin-left: 5%;
+	justify-content: space-between;
+}
+.icon-holder a{
+	width: auto;
+}
+.icon{
+	width: 15%;
+	cursor: pointer;
+}
+@keyframes moveOut{
+	0%{
+		opacity: 0;
+		transform: translateX(500px);
+	}
+	80%{
+		opacity: 0.8;
+		transform: translateX(-60px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes moveIn{
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+		transform: translateX(500px);
+	}
+}
+@media(max-width: 525px){
+	#contact{
+		right: 0;
+	}
+}
