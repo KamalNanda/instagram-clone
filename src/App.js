@@ -11,17 +11,19 @@ class App extends Component{
   	this.state = {
   		posts : [], 
       newPostImg : "",
-      newPostCaption : ""
+      newPostCaption : "",
+      myfile: ""
   	}
     this.body = React.createRef()
     this.onNewPostSubmit =this.onNewPostSubmit.bind(this)
     this.loadPosts = this.loadPosts.bind(this)
+    this.onFileChange = this.onFileChange.bind(this)
   }
   componentDidMount(){
     this.loadPosts()
   }
   async loadPosts(){
-    await axios.get("https://v2-api.sheety.co/64d720c036ff9d3e73304b37a08af355/instagramCloneKamalnanda/sheets").then(response => {
+    await axios.get("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/sheets").then(response => {
 
       console.log(response)
       this.setState({
@@ -34,6 +36,19 @@ class App extends Component{
         [event.target.name] : event.target.value 
     })
   }
+  onFileChange = (e) => {
+       var reader = new FileReader();
+      var formData = new FormData()
+      reader.onload = function (e) {
+          console.log(e.target.result)
+          
+      formData.append("picture" , e.target.result)
+      };
+      reader.readAsDataURL(e.target.files[0]);
+      console.log(reader)
+        console.log()
+     
+  }
   async onNewPostSubmit(event) {
     event.preventDefault()
     var data = {
@@ -43,7 +58,8 @@ class App extends Component{
         "userImg" : "https://ik.imagekit.io/hbj42mvqwv/95136161_2314381235529760_7156256645826215936_n_gNRPFl-ED.jpg",
         "postImg" : this.state.newPostImg,
         "postCaption" : this.state.newPostCaption,
-        "comments" : ""
+        "comments" : "",
+        "img": this.state.myFile
       }
     }
     var commentData = {
@@ -54,7 +70,7 @@ class App extends Component{
       }
     }
     JSON.stringify(data)
-    await fetch("https://v2-api.sheety.co/64d720c036ff9d3e73304b37a08af355/instagramCloneKamalnanda/sheets", {
+    await fetch("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/sheets", {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -66,7 +82,7 @@ class App extends Component{
       }).then( (json) => {
         console.log(json);
       });
-      await fetch("https://v2-api.sheety.co/64d720c036ff9d3e73304b37a08af355/instagramCloneKamalnanda/comments", {
+      /*await fetch("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/comments", {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -77,23 +93,18 @@ class App extends Component{
         return response.json()
       }).then( (json) => {
         console.log(json);
-      });
+      });*/
     this.loadPosts()
-    console.log(this.state.posts)
   }
-  componentDidUpdate(prevProps, prevState) {
-        console.log(prevState.posts)
-        console.log(this.state)
-    }
   render(){
     return (
      <div className="app" ref={this.body}>
-     	 <CreatePost onInputChange = {this.onNewPostInputChange} onFormSubmit={this.onNewPostSubmit}/>
+     	 <CreatePost onInputChange = {this.onNewPostInputChange} onFormSubmit={this.onNewPostSubmit} onFileChange = {this.onFileChange}/>
       
      	 {
      	 	this.state.posts.sort((x,y)=> {return y.id - x.id}).map((post , index) => {
  	      	 	return (
- 	      	 		<Post data={post} key={index} />
+ 	      	 		<Post data={post} key={index} loadPosts={this.loadPosts} />
  	      	 	)
  	      	 })
      	 }

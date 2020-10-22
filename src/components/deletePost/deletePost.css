@@ -1,0 +1,19 @@
+.button-flex{
+	display: flex;
+	width: 80%;
+	margin: auto;
+	justify-content: center;
+}
+.button-flex button{
+	width: 40%;
+	padding: 10px;
+	border: none;
+	color: white;
+	border-radius: 10px;
+}
+#yes-btn{
+	background: green;
+}
+#no-btn{
+	background: red
+}

@@ -28,6 +28,13 @@ class createPost extends Component{
 						  <label className="label">Image Link</label>
 						  <div className="control">
 						    <input className="input is-primary" name="newPostImg" onChange={this.props.onInputChange} required type="text" placeholder="Text input" />
+                             <input
+                              type="file"
+                              name="myfile"
+                              accept="video | image"
+                              onChange={this.props.onFileChange}
+                              id="upload-media"
+                            />
 						  </div>
 						</div>
 						<div className="field">
