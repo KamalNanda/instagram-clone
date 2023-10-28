@@ -30,7 +30,9 @@ class App extends Component{
       this.setState({
         posts : response.data.sheets
       })
-    })
+    }).catch(error){
+      console.log(error.response)
+    }
   }
   onNewPostInputChange = (event) => {
     this.setState({
@@ -71,30 +73,11 @@ class App extends Component{
       }
     }
     JSON.stringify(data)
-    await fetch("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/sheets", {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify(data)
-     }).then( (response) => {
-        return response.json()
-      }).then( (json) => {
-        console.log(json);
-      });
-      /*await fetch("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/comments", {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify(commentData)
-     }).then( (response) => {
-        return response.json()
-      }).then( (json) => {
-        console.log(json);
-      });*/
+    await axios.post("https://api.sheety.co/999fbcac66ed8face0ff1fdf904048ba/instagramCloneBackend/sheets", data).then(res => {
+      console.log(res.data)
+    }).catch(error){
+      console.log(error.response)
+    };  
     this.loadPosts()
   }
   render(){
